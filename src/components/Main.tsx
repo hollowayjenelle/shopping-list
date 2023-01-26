@@ -1,6 +1,7 @@
 /**
  * TODO:
  * Add feature that increases quantity if user enters an item that is already in the list
+ * Add local storage
  */
 
 import React, {FC, useState} from 'react';
@@ -40,9 +41,9 @@ const Main : FC = () => {
 
     function addItem(event : React.SyntheticEvent){
         event.preventDefault()
-        if(item.name === ''){
-            alert('Please enter an item')
-        }else if(item.quantity === 0 || (item.quantity).toString().match(/[a-zA-Z]/g)){
+        if(item.name === '' || item.name.match(/[0-9]+/g)){
+            alert('Please enter an item (without numbers)')
+        }else if(item.quantity === 0 || (item.quantity).toString().match(/[^0-9]+/g)){
             alert('Please enter an appropriate quantity')
         }else{
             setAllItems(prevArr => [...prevArr, item])
