@@ -1,6 +1,10 @@
 import React from 'react';
 
-const List : React.FC = () => {
+interface Props{
+    item: string
+}
+
+const List = (props: Props) => {
     return (
         <div className='list-item'>
 
