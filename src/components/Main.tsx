@@ -5,7 +5,7 @@ const Main : FC = () => {
     const [item, setItem] = useState<string>("")
     const [allItems, setAllItems] = useState<string[]>([])
     const items = allItems.map(i => {
-        return <List key={i} item= {i}/>
+        return <List key={i} item= {i} delete={deleteItem}/>
     })
 
     function handleChange(event: React.SyntheticEvent){
@@ -17,6 +17,11 @@ const Main : FC = () => {
     function addItem(){
         setAllItems(prevArr => [...prevArr, item])
         setItem('')
+    }
+
+    function deleteItem(itemName: string){
+        const newArray = allItems.filter(word => word !== itemName)
+        setAllItems(newArray)
     }
 
     console.log(item)
