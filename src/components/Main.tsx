@@ -16,8 +16,12 @@ const Main : FC = () => {
 
     function addItem(event : React.SyntheticEvent){
         event.preventDefault()
-        setAllItems(prevArr => [...prevArr, item])
-        setItem('')
+        if(item === ''){
+            alert('Please enter an item')
+        }else{
+            setAllItems(prevArr => [...prevArr, item])
+            setItem('')
+        }   
     }
 
     function deleteItem(itemName: string){
@@ -31,7 +35,7 @@ const Main : FC = () => {
     return (
         <main>
             <form className='input-area'>
-                <input id='input-field' type="text" placeholder='Enter item here (one item at a time)' name='itemName' value={item} onChange={handleChange} required></input>
+                <input id='input-field' type="text" placeholder='Enter item here (one item at a time)' name='itemName' value={item} onChange={handleChange}></input>
                 <button id='submit-btn' type='submit' onClick={addItem}>Enter</button>
             </form>
             <div className='display-area'>
