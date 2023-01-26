@@ -14,7 +14,8 @@ const Main : FC = () => {
         setItem(value)
     }
 
-    function addItem(){
+    function addItem(event : React.SyntheticEvent){
+        event.preventDefault()
         setAllItems(prevArr => [...prevArr, item])
         setItem('')
     }
@@ -24,13 +25,14 @@ const Main : FC = () => {
         setAllItems(newArray)
     }
 
+
     console.log(item)
     console.log(allItems)
     return (
         <main>
             <div className='input-area'>
                 <input className='input-field' type="text" placeholder='Enter item here (one item at a time)' value={item} onChange={handleChange}></input>
-                <button className='submit-btn' onClick={addItem}>Enter</button>
+                <button className='submit-btn' type='submit' onClick={addItem}>Enter</button>
             </div>
             <div className='display-area'>
                 {items}
