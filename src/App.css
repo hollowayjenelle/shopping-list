@@ -45,6 +45,8 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
 }
 
 #input-field{
@@ -64,4 +66,41 @@ body{
   border: none;
   border-radius: 15px;
   height: 30px;
+  font-weight: 700;
+  color: white
+}
+
+.display-area{
+  overflow-y: scroll;
+  height: 450px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.list-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+}
+
+.item-name{
+  font-weight: 700;
+}
+
+#delete-btn{
+  background-color: white;
+  color: red;
+  border: 0.6px solid red;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#delete-btn:hover{
+  background-color: red;
+  color: white;
 }

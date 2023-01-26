@@ -25,14 +25,15 @@ const Main : FC = () => {
         setAllItems(newArray)
     }
 
+
     console.log(item)
     console.log(allItems)
     return (
         <main>
-            <div className='input-area'>
-                <input id='input-field' type="text" placeholder='Enter item here (one item at a time)' value={item} onChange={handleChange}></input>
+            <form className='input-area'>
+                <input id='input-field' type="text" placeholder='Enter item here (one item at a time)' name='itemName' value={item} onChange={handleChange} required></input>
                 <button id='submit-btn' type='submit' onClick={addItem}>Enter</button>
-            </div>
+            </form>
             <div className='display-area'>
                 {items}
             </div>

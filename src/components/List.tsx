@@ -8,8 +8,8 @@ interface Props{
 const List = (props: Props) => {
     return (
         <div className='list-item'>
-            <p>{props.item}</p>
-            <button onClick={() => props.delete(props.item)}><i className="fa fa-trash-o"></i></button>
+            <p className='item-name'>{props.item}</p>
+            <button id='delete-btn' title='Delete' onClick={() => props.delete(props.item)}><i className="fa fa-trash-o"></i></button>
         </div>
     );
 };
