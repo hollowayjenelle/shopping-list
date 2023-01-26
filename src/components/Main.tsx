@@ -1,3 +1,8 @@
+/**
+ * TODO:
+ * Add feature that increases quantity if user enters an item that is already in the list
+ */
+
 import React, {FC, useState} from 'react';
 import List from './List';
 
