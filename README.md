@@ -1,3 +1,7 @@
+# Project Description
+
+This is shopping list application. Users can add an item and quantity to the list using the input fields. They'll be prompted with an error meesgae if their inputs are invalid. Users can also delete their entries. User can revisit their list without data being erased with the help of `localStorage`.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
