@@ -1,3 +1,8 @@
+/**
+ * TODO
+ * Add a checkbox that crosses off the item but not remove it from the list
+ * Add a total to the end (fixed)
+ */
 import React, {FC, useState, useEffect} from 'react';
 import List from './List';
 
