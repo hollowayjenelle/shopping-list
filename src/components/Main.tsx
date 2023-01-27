@@ -1,10 +1,4 @@
-/**
- * TODO:
- * Add feature that increases quantity if user enters an item that is already in the list
- * Add local storage
- */
-
-import React, {FC, useState} from 'react';
+import React, {FC, useState, useEffect} from 'react';
 import List from './List';
 
 interface Item{
@@ -17,7 +11,10 @@ const Main : FC = () => {
         name: '',
         quantity: 0
     })
-    const [allItems, setAllItems] = useState<Item[]>([])
+    const [allItems, setAllItems] = useState<Item[]>(() => {
+        const localData = localStorage.getItem('items')
+        return localData ? JSON.parse(localData) : []
+    })
     const items = allItems.map(i => {
         return <List 
                 key={i.name} 
@@ -28,6 +25,10 @@ const Main : FC = () => {
                 delete={deleteItem}
                 />
     })
+
+    useEffect(() => {
+        localStorage.setItem('items', JSON.stringify(allItems))
+    }, [allItems])
 
     function handleChange(event: React.SyntheticEvent){
         const target = event.target as HTMLInputElement
@@ -46,11 +47,24 @@ const Main : FC = () => {
         }else if(item.quantity === 0 || (item.quantity).toString().match(/[^0-9]+/g)){
             alert('Please enter an appropriate quantity')
         }else{
-            setAllItems(prevArr => [...prevArr, item])
-            setItem({
-                name: '',
-                quantity: 0
-            })
+            const found = allItems.find(i => item.name === i.name)
+            if(found){
+                const newArr = allItems.map(i =>{
+                    if(i.name === found.name){
+                        return{...item, quantity: Number(i.quantity)+Number(item.quantity)}
+                    }else{
+                        return i
+                    }
+                })
+                setAllItems(newArr)
+            }else{
+                setAllItems(prevArr => [...prevArr, item])
+                setItem({
+                    name: '',
+                    quantity: 0
+                })
+            }
+            
         }   
     }
 
